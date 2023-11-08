@@ -20,6 +20,7 @@ sequelize
 const db = {};
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
 db.user = User(sequelize, Sequelize);
 db.otp = Otp(sequelize, Sequelize);
 export default db;

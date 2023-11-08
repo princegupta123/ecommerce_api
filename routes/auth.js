@@ -1,8 +1,8 @@
 import express from 'express';
 const router = express.Router();
-import {loginWithMobile, registerWithMobile} from "../controller/authController.js";
-import { authSchema } from '../validations/authValidation.js';
-router.use("/register", authSchema, registerWithMobile);
+import {loginWithMobile, generateOtp} from "../controller/authController.js";
+import { validateAuth } from '../validations/authValidation.js';
+router.use("/send-otp", validateAuth, generateOtp);
 router.use("/login", loginWithMobile);
 
 export default router;
