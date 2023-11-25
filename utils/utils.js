@@ -38,7 +38,7 @@ export const otpProcess = async (req, res) => {
       ? res.status(200).json({
           message: "Otp Sent Successfully",
           success: true,
-          data: { userData, otpData },
+          data: { otpData },
         })
       : res.status(500).json({
           message: "Error while Otp Sending",
