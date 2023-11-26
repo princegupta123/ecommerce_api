@@ -1,6 +1,8 @@
 import { Sequelize } from "sequelize";
 import User from "./User.js";
-import Otp from "./Otp.js"
+import Otp from "./Otp.js";
+import Product from "./Product.js";
+import ProductImages from "./ProductImages.js";
 const sequelize = new Sequelize("ecom", "root", "123456", {
   host: "localhost",
   dialect: "mysql",
@@ -14,7 +16,7 @@ sequelize
   .catch((err) => {
     console.log("Unable to connect to the database: ", err);
   });
-  sequelize.sync({force: false});
+  sequelize.sync({force: true});
 
 
 const db = {};
@@ -23,4 +25,7 @@ db.Sequelize = Sequelize;
 
 db.user = User(sequelize, Sequelize);
 db.otp = Otp(sequelize, Sequelize);
+db.product = Product(sequelize, Sequelize);
+db.productImages = ProductImages(sequelize,Sequelize);
+
 export default db;
