@@ -4,7 +4,8 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import db from "./models/index.js";
 import authRoute from "./routes/auth.js";
-import adminRoute from "./routes/admin.js"
+import adminRoute from "./routes/admin.js";
+import userRoute from "./routes/user.js";
 dotenv.config();
 
 const app = express();
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/auth", authRoute);
 app.use("/admin", adminRoute);
+app.use("/user", userRoute);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {

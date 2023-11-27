@@ -16,7 +16,7 @@ sequelize
   .catch((err) => {
     console.log("Unable to connect to the database: ", err);
   });
-  sequelize.sync({force: true});
+  sequelize.sync({force: false});
 
 
 const db = {};
@@ -27,5 +27,10 @@ db.user = User(sequelize, Sequelize);
 db.otp = Otp(sequelize, Sequelize);
 db.product = Product(sequelize, Sequelize);
 db.productImages = ProductImages(sequelize,Sequelize);
+
+
+//association
+db.product.hasMany(db.productImages, { as: 'images', foreignKey: 'pId' });
+db.productImages.belongsTo(db.product, { foreignKey: 'pId' });
 
 export default db;
