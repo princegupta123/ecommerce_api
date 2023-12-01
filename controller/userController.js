@@ -126,3 +126,17 @@ export const deleteCartItem=async(req, res)=>{
         });
     }
 }
+
+
+export const orderController = async(req, res)=>{
+  try {
+    const {} = req.body;
+  } catch (error) {
+    console.log(error);
+        res.status(500).send({
+          message: "Error while order products",
+          success: false,
+          error: error,
+        });
+  }
+}

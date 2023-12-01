@@ -4,6 +4,10 @@ import Otp from "./Otp.js";
 import Product from "./Product.js";
 import ProductImages from "./ProductImages.js";
 import Cart from "./Cart.js";
+import Order from "./Order.js";
+import Address from "./Adress.js";
+import Category from "./Category.js";
+import OrderItems from "./OrderItems.js";
 const sequelize = new Sequelize("ecom", "root", "123456", {
   host: "localhost",
   dialect: "mysql",
@@ -17,7 +21,7 @@ sequelize
   .catch((err) => {
     console.log("Unable to connect to the database: ", err);
   });
-  sequelize.sync({force: false});
+  sequelize.sync({force: true});
 
 
 const db = {};
@@ -29,6 +33,10 @@ db.otp = Otp(sequelize, Sequelize);
 db.product = Product(sequelize, Sequelize);
 db.productImages = ProductImages(sequelize,Sequelize);
 db.cart = Cart(sequelize, Sequelize);
+db.order = Order(sequelize, Sequelize);
+db.address = Address(sequelize, Sequelize);
+db.category = Category(sequelize, Sequelize);
+db.orderItems = OrderItems(sequelize, Sequelize);
 
 //association
 db.product.hasMany(db.productImages, { as: 'images', foreignKey: 'pId' });
