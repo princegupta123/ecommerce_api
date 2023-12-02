@@ -7,22 +7,11 @@ const Category = (sequelize, Sequelize) => {
         autoIncrement: true,
       },
 
-      pId: {
-        type: Sequelize.BIGINT,
+      name: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
      
-      quantity: {
-        type: Sequelize.BIGINT,
-        allowNull: false,
-        defaultValue: 1
-      },
-
-      userId: {
-        type: Sequelize.BIGINT,
-        allowNull: false,
-      },
-
     });
     return category;
   };

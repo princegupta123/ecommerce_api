@@ -6,12 +6,24 @@ const Address = (sequelize, Sequelize) => {
         primaryKey: true,
         autoIncrement: true,
       },
-  
-      
+
       userId:{
         type: Sequelize.BIGINT,
         allowNull: false,
       },
+
+      city: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      sector: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      place: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      }
       
     },{
       timestamps: true,

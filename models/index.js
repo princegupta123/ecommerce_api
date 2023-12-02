@@ -21,7 +21,7 @@ sequelize
   .catch((err) => {
     console.log("Unable to connect to the database: ", err);
   });
-  sequelize.sync({force: true});
+  sequelize.sync({force: false});
 
 
 const db = {};
@@ -47,5 +47,17 @@ db.cart.belongsTo(db.user, {foreignKey: 'userId'});
 
 db.product.hasMany(db.cart, {foreignKey: 'pId'});
 db.cart.belongsTo(db.product, {foreignKey: 'pId'});
+
+db.order.hasMany(db.orderItems, {as: 'items',foreignKey: 'orderId'});
+db.orderItems.belongsTo(db.order, {foreignKey: 'orderId'});
+
+// db.orderItems.hasMany(db.product, {foreignKey: 'pId'});
+// db.product.belongsTo(db.orderItems, {foreignKey: 'pId'});
+db.orderItems.belongsTo(db.product, { foreignKey: 'pId' }); 
+db.product.hasMany(db.orderItems, { foreignKey: 'pId' }); 
+
+db.user.hasMany(db.order, {foreignKey: 'userId'});
+db.order.belongsTo(db.user, {foreignKey: 'userId'});
+
 
 export default db;
