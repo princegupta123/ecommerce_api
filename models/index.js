@@ -19,7 +19,7 @@ sequelize
     console.log("DB connection has been established successfully.");
   })
   .catch((err) => {
-    console.log("Unable to connect to the database: ", err);
+    console.log("Unable to connect to the database", err);
   });
   sequelize.sync({force: false});
 
@@ -58,6 +58,5 @@ db.product.hasMany(db.orderItems, { foreignKey: 'pId' });
 
 db.user.hasMany(db.order, {foreignKey: 'userId'});
 db.order.belongsTo(db.user, {foreignKey: 'userId'});
-
 
 export default db;
